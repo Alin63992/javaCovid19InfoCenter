@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mtdl_project.FavoritesController">
+   <children>
+      <Label layoutX="220.0" layoutY="36.0" text="Your favorite countries">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="92.0" layoutY="205.0" prefWidth="417.0" text="You do not have any favorites yet. You can add favorite countries in your list by clicking the &quot;Add country to your favorites list&quot; from a country's page when seeing its COVID-19 statistics or restrictions" wrapText="true" />
+      <ScrollPane fx:id="favoriteCountriesScroll" layoutX="11.0" layoutY="67.0" prefHeight="277.0" prefWidth="580.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
+      <Button fx:id="removeButton" layoutX="183.0" layoutY="361.0" mnemonicParsing="false" onAction="#seeDeletePicker" text="Remove a country from your favorites list" />
+      <Rectangle fx:id="darken" arcHeight="5.0" arcWidth="5.0" fill="#0000009c" height="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="600.0" />
+      <AnchorPane fx:id="deleteCountryPicker" layoutX="124.0" layoutY="100.0" prefHeight="200.0" prefWidth="354.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="354.0" />
+            <Label layoutX="46.0" layoutY="54.0" text="Pick a country" />
+            <ComboBox fx:id="pickCountryDelete" layoutX="135.0" layoutY="50.0" prefHeight="25.0" prefWidth="174.0" promptText="Albania" />
+            <Button alignment="CENTER" layoutX="55.0" layoutY="88.0" mnemonicParsing="false" onAction="#removeCountries" text="Delete this country from your favorites list" textAlignment="CENTER" />
+            <Button layoutX="148.0" layoutY="125.0" mnemonicParsing="false" onAction="#hideDeletePicker" text="Cancel" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

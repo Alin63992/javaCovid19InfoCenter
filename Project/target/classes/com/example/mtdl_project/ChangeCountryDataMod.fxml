@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mtdl_project.ChangeCountryDataModController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="531.0" prefWidth="642.0" VBox.vgrow="ALWAYS">
+         <children>
+            <GridPane hgap="30.0" layoutX="43.0" layoutY="137.0" prefHeight="306.0" prefWidth="739.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <AnchorPane prefHeight="146.0" prefWidth="143.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="Total confirmed cases" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2197ff7a" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                        <TextField fx:id="confirmed" layoutX="8.0" layoutY="118.0" prefHeight="25.0" prefWidth="134.0" style="-fx-opacity: 0.48;">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="146.0" prefWidth="143.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="Active cases" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff21217a" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                        <TextField fx:id="active" layoutX="8.0" layoutY="118.0" prefHeight="25.0" prefWidth="134.0" style="-fx-opacity: 0.48;">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="73.0" prefWidth="148.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="Cured cases" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#41d12e7a" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                        <TextField fx:id="cured" layoutX="8.0" layoutY="118.0" prefHeight="25.0" prefWidth="134.0" style="-fx-opacity: 0.48;">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="146.0" prefWidth="143.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="Total deaths" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0000007a" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                        <TextField fx:id="deaths" layoutX="8.0" layoutY="118.0" prefHeight="25.0" prefWidth="134.0" style="-fx-opacity: 0.48;">
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="146.0" prefWidth="143.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="Negative PCR test" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff961f7a" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                        <MenuButton fx:id="pcr" layoutX="8.0" layoutY="117.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Required" />
+                            <MenuItem mnemonicParsing="false" text="Not required" />
+                              <MenuItem mnemonicParsing="false" text="Custom value" />
+                          </items>
+                        </MenuButton>
+                        <Button fx:id="customPCR" layoutX="18.0" layoutY="75.0" mnemonicParsing="false" text="View custom value" visible="false" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="Mobile tracing app" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbff1f7a" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                        <MenuButton fx:id="app" layoutX="8.0" layoutY="119.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Required" />
+                              <MenuItem mnemonicParsing="false" text="Not required" />
+                              <MenuItem mnemonicParsing="false" text="Custom value" />
+                           </items>
+                        </MenuButton>
+                        <Button fx:id="customApp" layoutX="18.0" layoutY="77.0" mnemonicParsing="false" text="View custom value" visible="false" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="Quarantine" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#931fff7a" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                        <MenuButton fx:id="quarantine" layoutX="8.0" layoutY="118.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Required" />
+                              <MenuItem mnemonicParsing="false" text="Not required" />
+                              <MenuItem mnemonicParsing="false" text="Custom value" />
+                           </items>
+                        </MenuButton>
+                        <Button fx:id="customQuarantine" layoutX="18.0" layoutY="77.0" mnemonicParsing="false" text="View custom value" visible="false" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="173.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="Wearing a mask" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff6d1f7a" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                        <MenuButton fx:id="mask" layoutX="8.0" layoutY="118.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Required" />
+                              <MenuItem mnemonicParsing="false" text="Not required" />
+                              <MenuItem mnemonicParsing="false" text="Custom value" />
+                           </items>
+                        </MenuButton>
+                        <Button fx:id="customMask" layoutX="18.0" layoutY="77.0" mnemonicParsing="false" text="View custom value" visible="false" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="Vaccine" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#212eff7a" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                        <MenuButton fx:id="vaccine" layoutX="8.0" layoutY="118.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Required" />
+                              <MenuItem mnemonicParsing="false" text="Not required" />
+                              <MenuItem mnemonicParsing="false" text="Custom value" />
+                           </items>
+                        </MenuButton>
+                        <Button fx:id="customVaccine" layoutX="18.0" layoutY="77.0" mnemonicParsing="false" text="View custom value" visible="false" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="Nightly curfew" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d900ff7a" height="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+                        <MenuButton fx:id="curfew" layoutX="8.0" layoutY="117.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="In order" />
+                              <MenuItem mnemonicParsing="false" text="Not in order" />
+                              <MenuItem mnemonicParsing="false" text="Custom value" />
+                           </items>
+                        </MenuButton>
+                        <Button fx:id="customCurfew" layoutX="18.0" layoutY="77.0" mnemonicParsing="false" text="View custom value" visible="false" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </GridPane>
+            <Button layoutX="507.0" layoutY="468.0" mnemonicParsing="false" onAction="#saveChanges" style="-fx-background-color: #2aa9d0;" text="Save new data" textFill="WHITE">
+               <graphic>
+                  <Label text="💾" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </graphic>
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Label fx:id="countryLabel" alignment="CENTER" layoutX="-1.0" layoutY="97.0" prefHeight="17.0" prefWidth="827.0" text="Country" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="-5.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dadde1" height="96.0" layoutX="3.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="827.0" />
+                  <Label fx:id="welcome" layoutX="14.0" layoutY="8.0" prefHeight="36.0" prefWidth="117.0" text="Welcome, " textFill="#2aa9d0">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nameLabel" layoutX="126.0" layoutY="8.0" prefHeight="36.0" prefWidth="314.0" textFill="#2aa9d0">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="697.0" layoutY="26.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #2aa9d0;" text="Log out" textFill="WHITE">
+                     <graphic>
+                        <Label text="❌" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="14.0" layoutY="44.0" style="-fx-border-color: #2aa9d0; -fx-label-padding: 4px;" text="🛡 Moderator" textFill="#2aa9d0">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="546.0" layoutY="26.0" mnemonicParsing="false" onAction="#goHome" style="-fx-background-color: #2aa9d0;" text="Go home" textFill="WHITE">
+                     <graphic>
+                        <Label text="🏠" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Button layoutX="144.0" layoutY="468.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #2aa9d0;" text="Go back without saving changes" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <Label text="⬅" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </graphic>
+            </Button>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
