@@ -35,9 +35,9 @@ public class CountryRestrictionsController implements Initializable {
     @FXML
     Rectangle rectanglePCR=new Rectangle(), rectangleApp=new Rectangle(), rectangleQuarantine=new Rectangle(), rectangleMask=new Rectangle(), rectangleVaccine=new Rectangle(), rectangleCurfew=new Rectangle();
     @FXML
-    Label quarantineDetails=new Label();
+    Label quarantineDetails=new Label(), pcrDetails=new Label(), appDetails=new Label(), maskDetails=new Label(), vaccineDetails=new Label(), curfewDetails=new Label();
     @FXML
-    AnchorPane quarantineDetailsAnchor=new AnchorPane();
+    AnchorPane quarantineDetailsAnchor=new AnchorPane(), pcrDetailsAnchor=new AnchorPane(), appDetailsAnchor=new AnchorPane(), maskDetailsAnchor=new AnchorPane(), vaccineDetailsAnchor=new AnchorPane(), curfewDetailsAnchor=new AnchorPane();
     @FXML
     Button addRemoveFavoritesButton=new Button();
 
@@ -87,6 +87,32 @@ public class CountryRestrictionsController implements Initializable {
                 Color paint = new Color(1.0, 0.1294, 0.1294, 1.0);
                 rectanglePCR.setFill(paint);
             }
+            else if(!rs.getString("PCR_Test_Required").equals("unknown")) {
+                pcr.setText("/");
+                Color paint = new Color(1.0, 0.942, 0.13, 1.0);
+                rectanglePCR.setFill(paint);
+                String moreDetails=rs.getString("PCR_Test_Required");
+                rectanglePCR.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
+                    if(show){
+                        pcrDetails.setText(moreDetails);
+                        pcrDetailsAnchor.setVisible(true);
+                    }
+                    else{
+                        pcrDetails.setText("");
+                        pcrDetailsAnchor.setVisible(false);
+                    }
+                });
+                pcrDetailsAnchor.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
+                    if(show){
+                        pcrDetails.setText(moreDetails);
+                        pcrDetailsAnchor.setVisible(true);
+                    }
+                    else{
+                        pcrDetails.setText("");
+                        pcrDetailsAnchor.setVisible(false);
+                    }
+                });
+            }
             else {
                 pcr.setText("-");
                 pcr.setStyle("-fx-font-weight: bold");
@@ -103,10 +129,31 @@ public class CountryRestrictionsController implements Initializable {
                 Color paint = new Color(1.0, 0.1294, 0.1294, 1.0);
                 rectangleApp.setFill(paint);
             }
-            else if (rs.getString("Mobile_Tracing_App").equals("Recommended")){
-                tracing.setText(rs.getString("Mobile_Tracing_App"));
+            else if(!rs.getString("Mobile_Tracing_App").equals("unknown")) {
+                tracing.setText("/");
                 Color paint = new Color(1.0, 0.942, 0.13, 1.0);
                 rectangleApp.setFill(paint);
+                String moreDetails=rs.getString("Mobile_Tracing_App");
+                rectangleApp.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
+                    if(show){
+                        appDetails.setText(moreDetails);
+                        appDetailsAnchor.setVisible(true);
+                    }
+                    else{
+                        appDetails.setText("");
+                        appDetailsAnchor.setVisible(false);
+                    }
+                });
+                appDetailsAnchor.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
+                    if(show){
+                        appDetails.setText(moreDetails);
+                        appDetailsAnchor.setVisible(true);
+                    }
+                    else{
+                        appDetails.setText("");
+                        appDetailsAnchor.setVisible(false);
+                    }
+                });
             }
             else {
                 tracing.setText("-");
@@ -128,10 +175,10 @@ public class CountryRestrictionsController implements Initializable {
                 quarantine.setText("/");
                 Color paint = new Color(1.0, 0.942, 0.13, 1.0);
                 rectangleQuarantine.setFill(paint);
-                String quarantineDeets=rs.getString("quarantine");
+                String moreDetails=rs.getString("quarantine");
                 rectangleQuarantine.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
                     if(show){
-                        quarantineDetails.setText(quarantineDeets);
+                        quarantineDetails.setText(moreDetails);
                         quarantineDetailsAnchor.setVisible(true);
                     }
                     else{
@@ -141,7 +188,7 @@ public class CountryRestrictionsController implements Initializable {
                 });
                 quarantineDetailsAnchor.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
                     if(show){
-                        quarantineDetails.setText(quarantineDeets);
+                        quarantineDetails.setText(moreDetails);
                         quarantineDetailsAnchor.setVisible(true);
                     }
                     else{
@@ -166,6 +213,32 @@ public class CountryRestrictionsController implements Initializable {
                 Color paint = new Color(1.0, 0.1294, 0.1294, 1.0);
                 rectangleMask.setFill(paint);
             }
+            else if(!rs.getString("mask").equals("unknown")) {
+                mask.setText("/");
+                Color paint = new Color(1.0, 0.942, 0.13, 1.0);
+                rectangleMask.setFill(paint);
+                String moreDetails=rs.getString("mask");
+                rectangleMask.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
+                    if(show){
+                        maskDetails.setText(moreDetails);
+                        maskDetailsAnchor.setVisible(true);
+                    }
+                    else{
+                        maskDetails.setText("");
+                        maskDetailsAnchor.setVisible(false);
+                    }
+                });
+                maskDetailsAnchor.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
+                    if(show){
+                        maskDetails.setText(moreDetails);
+                        maskDetailsAnchor.setVisible(true);
+                    }
+                    else{
+                        maskDetails.setText("");
+                        maskDetailsAnchor.setVisible(false);
+                    }
+                });
+            }
             else {
                 mask.setText("-");
                 mask.setStyle("-fx-font-weight: bold");
@@ -182,6 +255,32 @@ public class CountryRestrictionsController implements Initializable {
                 Color paint = new Color(1.0, 0.1294, 0.1294, 1.0);
                 rectangleVaccine.setFill(paint);
             }
+            else if(!rs.getString("vaccine").equals("unknown")) {
+                vaccine.setText("/");
+                Color paint = new Color(1.0, 0.942, 0.13, 1.0);
+                rectangleVaccine.setFill(paint);
+                String moreDetails=rs.getString("vaccine");
+                rectangleVaccine.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
+                    if(show){
+                        vaccineDetails.setText(moreDetails);
+                        vaccineDetailsAnchor.setVisible(true);
+                    }
+                    else{
+                        vaccineDetails.setText("");
+                        vaccineDetailsAnchor.setVisible(false);
+                    }
+                });
+                vaccineDetailsAnchor.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
+                    if(show){
+                        vaccineDetails.setText(moreDetails);
+                        vaccineDetailsAnchor.setVisible(true);
+                    }
+                    else{
+                        vaccineDetails.setText("");
+                        vaccineDetailsAnchor.setVisible(false);
+                    }
+                });
+            }
             else {
                 vaccine.setText("-");
                 vaccine.setStyle("-fx-font-weight: bold");
@@ -197,6 +296,32 @@ public class CountryRestrictionsController implements Initializable {
                 curfew.setText("❌");
                 Color paint = new Color(1.0, 0.1294, 0.1294, 1.0);
                 rectangleCurfew.setFill(paint);
+            }
+            else if(!rs.getString("curfew").equals("unknown")) {
+                curfew.setText("/");
+                Color paint = new Color(1.0, 0.942, 0.13, 1.0);
+                rectangleCurfew.setFill(paint);
+                String moreDetails=rs.getString("curfew");
+                rectangleCurfew.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
+                    if(show){
+                        curfewDetails.setText(moreDetails);
+                        curfewDetailsAnchor.setVisible(true);
+                    }
+                    else{
+                        curfewDetails.setText("");
+                        curfewDetailsAnchor.setVisible(false);
+                    }
+                });
+                curfewDetailsAnchor.hoverProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean show) -> {
+                    if(show){
+                        curfewDetails.setText(moreDetails);
+                        curfewDetailsAnchor.setVisible(true);
+                    }
+                    else{
+                        curfewDetails.setText("");
+                        curfewDetailsAnchor.setVisible(false);
+                    }
+                });
             }
             else {
                 curfew.setText("-");

@@ -207,6 +207,36 @@
                   <Font size="20.0" />
                </font>
             </Button>
+            <AnchorPane fx:id="pcrDetailsAnchor" layoutX="104.0" layoutY="197.0" prefHeight="117.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="117.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Label fx:id="pcrDetails" alignment="CENTER" layoutX="-2.0" layoutY="1.0" prefHeight="117.0" prefWidth="200.0" text="Label" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="appDetailsAnchor" layoutX="314.0" layoutY="197.0" prefHeight="117.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="117.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Label fx:id="appDetails" alignment="CENTER" layoutX="-2.0" layoutY="1.0" prefHeight="117.0" prefWidth="200.0" text="Label" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="maskDetailsAnchor" layoutX="104.0" layoutY="364.0" prefHeight="117.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="117.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Label fx:id="maskDetails" alignment="CENTER" layoutX="-2.0" layoutY="1.0" prefHeight="117.0" prefWidth="200.0" text="Label" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="vaccineDetailsAnchor" layoutX="315.0" layoutY="364.0" prefHeight="117.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="117.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Label fx:id="vaccineDetails" alignment="CENTER" layoutX="-2.0" layoutY="1.0" prefHeight="117.0" prefWidth="200.0" text="Label" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="curfewDetailsAnchor" layoutX="517.0" layoutY="364.0" prefHeight="117.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="117.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Label fx:id="curfewDetails" alignment="CENTER" layoutX="-2.0" layoutY="1.0" prefHeight="117.0" prefWidth="200.0" text="Label" />
+               </children>
+            </AnchorPane>
          </children>
     </AnchorPane>
   </children>

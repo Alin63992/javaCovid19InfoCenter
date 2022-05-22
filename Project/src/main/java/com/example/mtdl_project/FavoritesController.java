@@ -202,9 +202,9 @@ public class FavoritesController implements Initializable {
         String favoriteCountries="";
         for(String c: favCountries){
             if(favCountries.indexOf(c)!=favCountries.size()-1){
-                favoriteCountries.concat(c + ", ");
+                favoriteCountries = favoriteCountries + c + ", ";
             }
-            else favoriteCountries.concat(c);
+            else favoriteCountries = favoriteCountries + c;
         }
         stmt.executeUpdate("update users set Favorites='"+favoriteCountries+"' where Email='"+email+"'");
         deleteCountryPicker.setVisible(false);

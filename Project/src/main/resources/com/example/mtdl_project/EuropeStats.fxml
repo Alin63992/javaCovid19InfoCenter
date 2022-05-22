@@ -60,7 +60,14 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
               </content>
             </ScrollPane>
-            <Button layoutX="536.0" layoutY="100.0" mnemonicParsing="false" onAction="#seeHeatmap" text="View the distribution of active cases in a heatmap" />
+            <Button layoutX="511.0" layoutY="96.0" mnemonicParsing="false" onAction="#seeHeatmap" style="-fx-background-color: #2aa9d0;" text="View the distribution of active cases in a heatmap" textFill="WHITE">
+               <graphic>
+                  <Label text="🗺" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </graphic></Button>
             <Button layoutX="363.0" layoutY="22.0" mnemonicParsing="false" onAction="#goHome" style="-fx-background-color: #2aa9d0;" text="Go home" textFill="WHITE">
                <graphic>
                   <Label text="🏠" textFill="WHITE">

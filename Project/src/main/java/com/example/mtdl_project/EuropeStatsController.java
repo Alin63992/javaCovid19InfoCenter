@@ -84,11 +84,16 @@ public class EuropeStatsController implements Initializable {
             int i=1;
             rs=stmt.executeQuery("select * from covid_cases");
             while(rs.next()){
-                grid.add(new Label(rs.getString(2)), 0, i);
-                grid.add(new Label(rs.getString(3)), 1, i);
-                grid.add(new Label(rs.getString(4)), 2, i);
-                grid.add(new Label(rs.getString(5)), 3, i);
-                grid.add(new Label(rs.getString(6)), 4, i);
+                if(!rs.getString(2).equals("unknown")) grid.add(new Label(rs.getString(2)), 0, i);
+                else grid.add(new Label("-"), 0, i);
+                if(!rs.getString(3).equals("unknown")) grid.add(new Label(rs.getString(3)), 1, i);
+                else grid.add(new Label("-"), 1, i);
+                if(!rs.getString(4).equals("unknown")) grid.add(new Label(rs.getString(4)), 2, i);
+                else grid.add(new Label("-"), 2, i);
+                if(!rs.getString(5).equals("unknown")) grid.add(new Label(rs.getString(5)), 3, i);
+                else grid.add(new Label("-"), 3, i);
+                if(!rs.getString(6).equals("unknown")) grid.add(new Label(rs.getString(6)), 4, i);
+                else grid.add(new Label("-"), 4, i);
                 if(rs.getString(7).equals("true"))
                     grid.add(new Label("✔"), 5, i);
                 else if(rs.getString(7).equals("false"))
