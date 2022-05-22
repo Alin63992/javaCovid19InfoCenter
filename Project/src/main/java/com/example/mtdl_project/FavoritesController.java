@@ -24,7 +24,7 @@ public class FavoritesController implements Initializable {
     @FXML
     AnchorPane deleteCountryPicker=new AnchorPane();
     @FXML
-    ComboBox pickCountryDelete=new ComboBox<>();
+    ComboBox<String> pickCountryDelete=new ComboBox<>();
     @FXML
     Rectangle darken;
     GridPane grid=new GridPane();
@@ -194,7 +194,7 @@ public class FavoritesController implements Initializable {
         readEmail.close();
         Connection data=DriverManager.getConnection("jdbc:mysql://localhost:3306/mtdl", "root", "");
         Statement stmt=data.createStatement();
-        String countryToBeRemoved=pickCountryDelete.getValue().toString();
+        String countryToBeRemoved=pickCountryDelete.getValue();
         ResultSet rs = stmt.executeQuery("select Favorites from users where Email='"+email+"'");
         rs.next();
         ArrayList<String> favCountries = new ArrayList<>(Arrays.asList(rs.getString(1).split(", ")));
@@ -202,9 +202,9 @@ public class FavoritesController implements Initializable {
         String favoriteCountries="";
         for(String c: favCountries){
             if(favCountries.indexOf(c)!=favCountries.size()-1){
-                favoriteCountries=favoriteCountries + c + ", ";
+                favoriteCountries.concat(c + ", ");
             }
-            else favoriteCountries=favoriteCountries + c;
+            else favoriteCountries.concat(c);
         }
         stmt.executeUpdate("update users set Favorites='"+favoriteCountries+"' where Email='"+email+"'");
         deleteCountryPicker.setVisible(false);

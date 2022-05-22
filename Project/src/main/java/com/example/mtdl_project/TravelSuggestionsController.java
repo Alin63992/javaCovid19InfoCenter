@@ -306,7 +306,7 @@ public class TravelSuggestionsController implements Initializable{
                 wishesLabel.setText(wishesLabel.getText().concat("Overnight Curfew "+pcr.getText()));
             }
         }
-        if (error==false) {
+        if (!error) {
             if(countries.size()!=0) {
                 for (int i: countries.values()){
                     if(i==wishCount) allWishes=true;
@@ -321,8 +321,7 @@ public class TravelSuggestionsController implements Initializable{
                     stage.show();
                 }
                 else if(!allWishes && someWishes){
-                    FXMLLoader loadSomeWishes =new FXMLLoader(MTDL_Project.class.getResource("TravelSuggestionsSomeCriteria.fxml"));
-                    Scene scene=new Scene(loadSomeWishes.load());
+                    Scene scene=new Scene(FXMLLoader.load(MTDL_Project.class.getResource("TravelSuggestionsSomeCriteria.fxml")));
                     Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
                     stage.setScene(scene);
                     stage.setTitle("Travel Suggestions");
@@ -664,54 +663,42 @@ public class TravelSuggestionsController implements Initializable{
         ObservableList<MenuItem> menuButtonItems=pcr.getItems();
         while (i<menuButtonItems.size()){
             MenuItem item=menuButtonItems.get(i);
-            item.setOnAction(act->{
-                pcr.setText(item.getText());
-            });
+            item.setOnAction(act-> pcr.setText(item.getText()));
             i++;
         }
         i=0;
         menuButtonItems=app.getItems();
         while (i<menuButtonItems.size()){
             MenuItem item=menuButtonItems.get(i);
-            item.setOnAction(act->{
-                app.setText(item.getText());
-            });
+            item.setOnAction(act-> app.setText(item.getText()));
             i++;
         }
         i=0;
         menuButtonItems=quarantine.getItems();
         while (i<menuButtonItems.size()){
             MenuItem item=menuButtonItems.get(i);
-            item.setOnAction(act->{
-                quarantine.setText(item.getText());
-            });
+            item.setOnAction(act-> quarantine.setText(item.getText()));
             i++;
         }
         i=0;
         menuButtonItems=mask.getItems();
         while (i<menuButtonItems.size()){
             MenuItem item=menuButtonItems.get(i);
-            item.setOnAction(act->{
-                mask.setText(item.getText());
-            });
+            item.setOnAction(act-> mask.setText(item.getText()));
             i++;
         }
         i=0;
         menuButtonItems=vaccine.getItems();
         while (i<menuButtonItems.size()){
             MenuItem item=menuButtonItems.get(i);
-            item.setOnAction(act->{
-                vaccine.setText(item.getText());
-            });
+            item.setOnAction(act-> vaccine.setText(item.getText()));
             i++;
         }
         i=0;
         menuButtonItems=curfew.getItems();
         while (i<menuButtonItems.size()){
             MenuItem item=menuButtonItems.get(i);
-            item.setOnAction(act->{
-                curfew.setText(item.getText());
-            });
+            item.setOnAction(act-> curfew.setText(item.getText()));
             i++;
         }
     }

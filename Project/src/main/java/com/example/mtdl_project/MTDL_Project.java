@@ -18,7 +18,8 @@ class MyCallable implements Callable<Integer> {
         Statement stmt= data.createStatement();
         ResultSet rs = stmt.executeQuery("select Date_Updated from covid_cases");
         if (!rs.next()) {
-            String command = "curl \"https://test.api.amadeus.com/v1/security/oauth2/token\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"grant_type=client_credentials&client_id=JGudQKMibNnIzujFTrWJdhVZpB1GgeJB&client_secret=1GgEGmzWeZ2uNfxC\"";
+            System.out.println("Populating database with country data...");
+            String command = "curl \"https://test.api.amadeus.com/v1/security/oauth2/token\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"grant_type=client_credentials&client_id=53AwWvpK5eAOu6doD5yGdW6LkEG5hia2&client_secret=7tFqbXy7oAXoq5mL\"";
             Process p = Runtime.getRuntime().exec(command);
             BufferedReader authProcessReturn = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String lineRead;
@@ -36,7 +37,6 @@ class MyCallable implements Callable<Integer> {
             int i=0;
             while (i < locales.length) {
                 countryInLocale = locales[i];
-                System.out.println(countryInLocale);
                 String getInfoCommand = "curl -X GET \"https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=" + countryInLocale + "\" -H \"Authorization: Bearer " + authToken + "\"";
                 Locale obj = new Locale("", countryInLocale);
                 String Country_Name = obj.getDisplayCountry();
@@ -158,7 +158,7 @@ class MyCallable implements Callable<Integer> {
                     }
                     else if (lineRead.contains("\"errors\"")) error=true;
                 }
-                if (error!=false) {
+                if (!error) {
                     try {
                         stmt.executeUpdate("insert into covid_cases values ('" + Date_Updated + "', '" + Country_Name + "', '" + Total_Confirmed_Cases + "', '" + Active_Cases + "', '" + Cured_Cases + "', '" + Total_Deaths + "', '" + PCR_Test_Required + "', '" + Mobile_Tracing_App + "', '" + quarantine + "', '" + mask + "', '" + vaccine + "', '" + curfew +"')");
                     } catch (SQLException e) {
@@ -168,9 +168,11 @@ class MyCallable implements Callable<Integer> {
                 i++;
             }
             System.out.println("Done");
+            stmt.close();
             p.destroy();
         } else if (!rs.getString("Date_Updated").matches(LocalDate.now().toString())) {
-            String command = "curl \"https://test.api.amadeus.com/v1/security/oauth2/token\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"grant_type=client_credentials&client_id=JGudQKMibNnIzujFTrWJdhVZpB1GgeJB&client_secret=1GgEGmzWeZ2uNfxC\"";
+            System.out.println("Updating country data in the database...");
+            String command = "curl \"https://test.api.amadeus.com/v1/security/oauth2/token\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"grant_type=client_credentials&client_id=53AwWvpK5eAOu6doD5yGdW6LkEG5hia2&client_secret=7tFqbXy7oAXoq5mL\"";
             Process p = Runtime.getRuntime().exec(command);
             BufferedReader authProcessReturn = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String lineRead;
@@ -188,7 +190,6 @@ class MyCallable implements Callable<Integer> {
             int i=0;
             while (i < locales.length) {
                 countryInLocale=locales[i];
-                System.out.println(countryInLocale);
                 String getInfoCommand = "curl -X GET \"https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=" + countryInLocale + "\" -H \"Authorization: Bearer " + authToken + "\"";
                 Locale obj = new Locale("", countryInLocale);
                 String Date_Updated = LocalDate.now().toString();
@@ -306,7 +307,7 @@ class MyCallable implements Callable<Integer> {
                     }
                     else if (lineRead.contains("\"errors\"")) error=true;
                 }
-                if (error==false) {
+                if (!error) {
                     try {
                         stmt.executeUpdate("update covid_cases set Date_Updated='" + Date_Updated + "', Total_Confirmed_Cases='" + Total_Confirmed_Cases + "', Active_Cases='" + Active_Cases + "', Cured_Cases='" + Cured_Cases + "', Total_Deaths='" + Total_Deaths + "', PCR_Test_Required='" + PCR_Test_Required + "', Mobile_Tracing_App='" + Mobile_Tracing_App + "', quarantine='" + quarantine + "', mask='" + mask + "', vaccine='" + vaccine + "', curfew='" + curfew + "' where Country_Name='" + Country_Name + "'");
                     }

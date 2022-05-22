@@ -55,9 +55,7 @@ public class AddSomeoneAdminController implements Initializable{
             e.printStackTrace();
         }
         for (MenuItem item: acctRole.getItems()){
-            item.setOnAction(act->{
-                acctRole.setText(item.getText());
-            });
+            item.setOnAction(act-> acctRole.setText(item.getText()));
         }
     }
 
@@ -123,15 +121,15 @@ public class AddSomeoneAdminController implements Initializable{
 
     public void goHome(ActionEvent event) throws IOException {
         Stage stage=(Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene homeMod=new Scene(FXMLLoader.load(MTDL_Project.class.getResource("HomeModerator.fxml")));
+        Scene homeMod=new Scene(FXMLLoader.load(MTDL_Project.class.getResource("HomeAdmin.fxml")));
         stage.setScene(homeMod);
-        stage.setTitle("[MODERATING] Home");
+        stage.setTitle("[ADMINISTRATOR] Home");
     }
 
     public void goBack(ActionEvent event) throws IOException {
         Stage stage=(Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene back =new Scene(FXMLLoader.load(MTDL_Project.class.getResource("AllCountriesMod.fxml")));
+        Scene back =new Scene(FXMLLoader.load(MTDL_Project.class.getResource("AllUsersAdmin.fxml")));
         stage.setScene(back);
-        stage.setTitle("[MODERATING] All countries");
+        stage.setTitle("[ADMINISTRATOR] All countries");
     }
 }

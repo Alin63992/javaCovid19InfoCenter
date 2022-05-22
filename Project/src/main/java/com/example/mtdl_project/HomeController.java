@@ -18,9 +18,9 @@ import java.util.Scanner;
 
 public class HomeController implements Initializable {
     @FXML
-    ComboBox pickCountry=new ComboBox<>();
+    ComboBox<String> pickCountry=new ComboBox<>();
     @FXML
-    ComboBox pickCountryRestrictions=new ComboBox<>();
+    ComboBox<String> pickCountryRestrictions=new ComboBox<>();
     @FXML
     Label nameLabel=new Label();
     @FXML

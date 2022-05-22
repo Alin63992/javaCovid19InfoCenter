@@ -29,7 +29,7 @@ public class AllAccountsAdminController implements Initializable {
     @FXML
     AnchorPane deleteAccountPicker=new AnchorPane();
     @FXML
-    ComboBox pickAccountDelete=new ComboBox<>();
+    ComboBox<String> pickAccountDelete=new ComboBox<>();
 
     public void prepareGrid() throws SQLException {
         Label label1=new Label("First name");
@@ -168,7 +168,7 @@ public class AllAccountsAdminController implements Initializable {
         ButtonType answer=question.showAndWait().orElse(ButtonType.NO);
         if(ButtonType.YES.equals(answer)){
             question.close();
-            String[] parts=pickAccountDelete.getValue().toString().split(": ");
+            String[] parts=pickAccountDelete.getValue().split(": ");
             String emailToBeDeleted=parts[0];
             Connection data = DriverManager.getConnection("jdbc:mysql://localhost:3306/mtdl", "root", "");
             Statement stmt = data.createStatement();

@@ -93,31 +93,43 @@ public class EuropeStatsController implements Initializable {
                     grid.add(new Label("✔"), 5, i);
                 else if(rs.getString(7).equals("false"))
                     grid.add(new Label("❌"), 5, i);
+                else if(rs.getString(7).equals("unknown"))
+                    grid.add(new Label("-"), 5, i);
                 else grid.add(new Label(rs.getString(7)), 5, i);
                 if(rs.getString(8).equals("true"))
                     grid.add(new Label("✔"), 6, i);
                 else if(rs.getString(8).equals("false"))
                     grid.add(new Label("❌"), 6, i);
+                else if(rs.getString(8).equals("unknown"))
+                    grid.add(new Label("-"), 6, i);
                 else grid.add(new Label(rs.getString(8)), 6, i);
                 if(rs.getString(9).equals("true"))
                     grid.add(new Label("✔"), 7, i);
                 else if(rs.getString(9).equals("false"))
                     grid.add(new Label("❌"), 7, i);
+                else if(rs.getString(9).equals("unknown"))
+                    grid.add(new Label("-"), 7, i);
                 else grid.add(new Label(rs.getString(9)), 7, i);
                 if(rs.getString(10).equals("true"))
                     grid.add(new Label("✔"), 8, i);
                 else if(rs.getString(10).equals("false"))
                     grid.add(new Label("❌"), 8, i);
+                else if(rs.getString(10).equals("unknown"))
+                    grid.add(new Label("-"), 8, i);
                 else grid.add(new Label(rs.getString(10)), 8, i);
                 if(rs.getString(11).equals("true"))
                     grid.add(new Label("✔"), 9, i);
                 else if(rs.getString(11).equals("false"))
                     grid.add(new Label("❌"), 9, i);
+                else if(rs.getString(11).equals("unknown"))
+                    grid.add(new Label("-"), 9, i);
                 else grid.add(new Label(rs.getString(11)), 9, i);
                 if(rs.getString(12).equals("true"))
                     grid.add(new Label("✔"), 10, i);
                 else if(rs.getString(12).equals("false"))
                     grid.add(new Label("❌"), 10, i);
+                else if(rs.getString(12).equals("unknown"))
+                    grid.add(new Label("-"), 10, i);
                 else grid.add(new Label(rs.getString(12)), 10, i);
                 i++;
             }

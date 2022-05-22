@@ -75,7 +75,7 @@ public class ChangeCountryDataModController implements Initializable{
             Scanner readData = new Scanner(new File("data"));
             String email = null;
             String country = null;
-            ResultSet rs = null;
+            ResultSet rs;
             while (readData.hasNext()) {
                 String line = readData.nextLine();
                 if (line.contains("email:")) {
