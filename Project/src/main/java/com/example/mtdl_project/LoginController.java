@@ -42,7 +42,7 @@ public class LoginController implements Initializable {
             Statement stmt = data.createStatement();
             EmailValidator validator = EmailValidator.getInstance();
             ResultSet rs = stmt.executeQuery("select Password from users where Email='" + emailField.getText() + "'");
-            if (validator.isValid(emailField.getText())) {
+            if (!emailField.getText().equals("") && !passwordField.getText().equals("")) {
                 if (rs.next()) {
                     if (passwordField.getText().equals(rs.getString(1))) {
                         BufferedWriter writeEmail = new BufferedWriter(new FileWriter("data"));
@@ -77,25 +77,25 @@ public class LoginController implements Initializable {
                         wrong.setContentText("It looks like your password is wrong. Check it and try logging in again!");
                         wrong.show();
                     }
-                } else if (emailField.getText().equals("")) {
-                    Alert wrong = new Alert(Alert.AlertType.WARNING);
-                    wrong.setTitle("Type an e-mail address");
-                    wrong.setHeaderText("Like a lot of dishes just aren't good without salt or pepper, an account is no good without an e-mail address...");
-                    wrong.setContentText("Please type in an e-mail address and try logging in again.");
+                } else if (!validator.isValid(emailField.getText())) {
+                    Alert wrong = new Alert(Alert.AlertType.ERROR);
+                    wrong.setTitle("Oops");
+                    wrong.setHeaderText("Wrong e-mail format!");
+                    wrong.setContentText("The e-mail you entered is not valid. Please ensure that it has the correct format and try again.");
                     wrong.show();
                 } else {
                     Alert wrong = new Alert(Alert.AlertType.ERROR);
                     wrong.setTitle("Oops");
                     wrong.setHeaderText("Oops! Nonexistent e-mail address.");
-                    wrong.setContentText("We couldn't find this e-mail address. Check it or <a>create a new account</a>!");
+                    wrong.setContentText("We couldn't find this e-mail address. Please check it and try again!");
                     wrong.show();
                 }
                 stmt.close();
             } else {
                 Alert wrong = new Alert(Alert.AlertType.ERROR);
-                wrong.setTitle("Oops");
-                wrong.setHeaderText("Wrong e-mail format!");
-                wrong.setContentText("The e-mail you entered is not valid. Please ensure that it has the correct format and try again.");
+                wrong.setTitle("E-mail address or password missing");
+                wrong.setHeaderText("You didn't type in an e-mail address or password!");
+                wrong.setContentText("Please type both of them and try logging in again.");
                 wrong.show();
             }
         } catch (Exception a) {
