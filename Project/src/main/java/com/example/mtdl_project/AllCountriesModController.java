@@ -77,6 +77,8 @@ public class AllCountriesModController implements Initializable {
         Statement stmt = data.createStatement();
         ResultSet rs=stmt.executeQuery("select * from covid_cases");
         while(rs.next()){
+            pickCountry.getItems().add(rs.getString(1));
+            pickCountryDelete.getItems().add(rs.getString(1));
             grid.add(new Label(rs.getString(2)), 0, i);
             grid.add(new Label(rs.getString(3)), 1, i);
             grid.add(new Label(rs.getString(4)), 2, i);
@@ -258,7 +260,7 @@ public class AllCountriesModController implements Initializable {
     }
 
     public void hideChangePicker(ActionEvent event){
-        deleteCountryPicker.setVisible(false);
+        changeCountryDataPicker.setVisible(false);
         darken.setVisible(false);
         Stage stage=(Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("[MODERATING] All countries");
@@ -328,6 +330,8 @@ public class AllCountriesModController implements Initializable {
         Stage stage=(Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("[MODERATING] All countries");
         grid.getChildren().clear();
+        pickCountryDelete.getItems().clear();
+        pickCountry.getItems().clear();
         prepareGrid();
     }
 }
