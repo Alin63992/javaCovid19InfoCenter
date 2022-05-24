@@ -24,6 +24,8 @@ public class LoginController implements Initializable {
     @FXML
     TextField emailField = new TextField();
     @FXML
+    TextField emailFieldReset = new TextField();
+    @FXML
     PasswordField passwordField;
     @FXML
     TextField newPassword;
@@ -103,28 +105,26 @@ public class LoginController implements Initializable {
         }
     }
 
-    public void resetPasswordButton(ActionEvent event) {
+    public void resetPasswordButton(ActionEvent event) throws SQLException, IOException {
         Stage resetStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        if (newPassword.getText().length() != 0 && confirmNewPassword.getText().length() != 0) {
-            try {
-                Connection data = DriverManager.getConnection("jdbc:mysql://localhost:3306/mtdl", "root", "");
-                Statement stmt = data.createStatement();
-                ResultSet rs = stmt.executeQuery("select count(Email) from users where Email='" + emailField.getText() + "'");
-                rs.next();
-                if (validator.isValid(emailField.getText())) {
+        if (newPassword.getText().length() != 0 && confirmNewPassword.getText().length() != 0 && emailFieldReset.getText().length() != 0) {
+            if (validator.isValid(emailFieldReset.getText())) {
+                if (newPassword.getText().equals(confirmNewPassword.getText())) {
+                    Connection data = DriverManager.getConnection("jdbc:mysql://localhost:3306/mtdl", "root", "");
+                    Statement stmt = data.createStatement();
+                    ResultSet rs = stmt.executeQuery("select count(Email) from users where Email='" + emailFieldReset.getText() + "'");
+                    rs.next();
                     if (rs.getInt(1) != 0) {
-                        if (newPassword.getText().equals(confirmNewPassword.getText())) {
-                            stmt.executeUpdate("update users set Password='" + newPassword.getText() + "' where Email='" + emailField.getText() + "'");
-                            Alert success = new Alert(Alert.AlertType.INFORMATION);
-                            success.setHeaderText("Password reset successfully!");
-                            success.showAndWait();
-                            resetStage.close();
-                        } else {
-                            Alert wrong = new Alert(Alert.AlertType.ERROR);
-                            wrong.setHeaderText("Passwords don't match!");
-                            wrong.setContentText("The new password and its confirmation do not match. Please type them again.");
-                            wrong.showAndWait();
-                        }
+                        stmt.executeUpdate("update users set Password='" + newPassword.getText() + "' where Email='" + emailFieldReset.getText() + "'");
+                        Alert success = new Alert(Alert.AlertType.INFORMATION);
+                        success.setHeaderText("Password reset successfully!");
+                        success.showAndWait();
+                        resetStage.close();
+                        Stage loginStage=new Stage();
+                        loginStage.setScene(new Scene(FXMLLoader.load(MTDL_Project.class.getResource("LoginPage.fxml"))));
+                        loginStage.setTitle("Log in");
+                        loginStage.setResizable(false);
+                        loginStage.show();
                     } else {
                         Alert wrong = new Alert(Alert.AlertType.ERROR);
                         wrong.setHeaderText("The e-mail address you entered does not exist in our database.");
@@ -133,28 +133,43 @@ public class LoginController implements Initializable {
                     }
                 } else {
                     Alert wrong = new Alert(Alert.AlertType.ERROR);
-                    wrong.setHeaderText("Wrong e-mail format");
-                    wrong.setContentText("The address you entered is not a correct e-mail format. Please check it and type it again.");
+                    wrong.setHeaderText("Passwords don't match!");
+                    wrong.setContentText("The new password and its confirmation do not match. Please type them again.");
                     wrong.showAndWait();
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
+            } else {
+                Alert wrong = new Alert(Alert.AlertType.ERROR);
+                wrong.setHeaderText("Wrong e-mail format");
+                wrong.setContentText("The address you entered is not a correct e-mail format. Please check it and type it again.");
+                wrong.showAndWait();
             }
         } else {
             Alert wrong = new Alert(Alert.AlertType.ERROR);
-            wrong.setHeaderText("You need to write your new password in both password fields in order to reset it.");
+            wrong.setHeaderText("You need to write an e-mail address and your new password in both password fields in order to reset it.");
             wrong.showAndWait();
         }
     }
 
-    public void resetPassword() throws IOException {
+    public void resetPassword(ActionEvent event) throws IOException {
+        Stage loginStage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        loginStage.close();
         Stage resetStage = new Stage();
+        resetStage.setOnCloseRequest(a->System.exit(0));
         resetStage.setScene(new Scene(FXMLLoader.load(MTDL_Project.class.getResource("ResetPassword.fxml"))));
         resetStage.setTitle("Reset password");
         resetStage.setResizable(false);
         resetStage.show();
     }
 
+    public void showLoginScreen(ActionEvent event) throws IOException {
+        Stage resetStage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        resetStage.close();
+        Stage loginStage=new Stage();
+        loginStage.setScene(new Scene(FXMLLoader.load(MTDL_Project.class.getResource("LoginPage.fxml"))));
+        loginStage.setTitle("Log in");
+        loginStage.setResizable(false);
+        loginStage.show();
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loginAnchor.setOnKeyPressed(key -> {
